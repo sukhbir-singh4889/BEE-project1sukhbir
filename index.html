@@ -1,137 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>First Step | Sneakers</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FirstStep — Find Your Next Pair</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="FirstStep home">FirstStep.</a>
+    <nav aria-label="Main navigation">
+      <a href="#collection">Shop</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="cart-btn" id="openCart" type="button">Cart (<span id="cartCount">0</span>)</button>
+  </header>
 
-<header class="site-header">
-  <a href="#" class="brand">First Step</a>
-  <nav><a href="#collection">Shop</a><a href="#about">About</a></nav>
-  <button class="cart-btn" id="openCart">Cart (<span id="cartCount">0</span>)</button>
-</header>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Find your next favourite pair.</h1>
+        <p class="lead">Everyday sneakers. Standout style. Your next step starts here.</p>
+        <a class="shop-btn" href="#collection">Shop the collection</a>
+      </div>
+    </section>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Fresh kicks. Zero stress.</h1>
-    <p class="lead">Six pairs we're obsessed with. Pick your brand, find your fit and flex.</p>
-    <a href="#collection" class="shop-btn">Shop the Drop</a>
-  </div>
-</section>
+    <section class="collection" id="collection">
+      <div class="section-head">
+        <h2>Fresh steps</h2>
+        <p>Find the pair that fits your style.</p>
+      </div>
 
-<main id="collection" class="collection">
-  <div class="section-head">
-    <h2>Pick Your Pair</h2>
-    <p id="resultCount"></p>
-  </div>
-
-  <div class="toolbar">
-    <div class="pills" id="brandPills"></div>
-    <div class="controls">
-      <select id="typeFilter" aria-label="Filter by type">
-        <option value="all">All types</option>
-        <option value="Running">Running</option>
-        <option value="Lifestyle">Lifestyle</option>
-        <option value="Skate">Skate</option>
-      </select>
-      <select id="priceFilter" aria-label="Filter by price">
-        <option value="all">Any price</option>
-        <option value="u5">Under ₹5,000</option>
-        <option value="m">₹5,000 to ₹10,000</option>
-        <option value="o">Above ₹10,000</option>
-      </select>
-      <select id="sort" aria-label="Sort products">
-        <option value="featured">Featured</option>
-        <option value="low">Price: Low to High</option>
-        <option value="high">Price: High to Low</option>
-        <option value="brand">Brand: A to Z</option>
-        <option value="name">Name: A to Z</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="grid" id="productGrid"></div>
-</main>
-
-<section id="about" class="about">
-  <h2>Why First Step?</h2>
-  <p>We keep it simple: a small drop of sneakers we actually like, from brands you already know, with quick delivery.</p>
-</section>
-
-<footer>
-  <span>First Step</span>
-  <span>Free delivery on orders above ₹5,000</span>
-</footer>
-
-<div class="overlay" id="overlay"></div>
-
-<aside class="drawer" id="drawer" aria-label="Shopping cart">
-  <div class="drawer-head">
-    <h3>Your Cart</h3>
-    <button class="text-btn" id="closeCart">Close</button>
-  </div>
-  <div class="drawer-body" id="cartItems"></div>
-  <div class="drawer-foot" id="cartFoot" hidden>
-    <form id="couponForm" class="coupon">
-      <input id="couponInput" placeholder="Discount code" aria-label="Discount code" autocomplete="off">
-      <button type="submit">Apply</button>
-    </form>
-    <p class="coupon-msg" id="couponMsg">Try: STEP10, FLAT500, FREESHIP</p>
-    <dl class="summary" id="summary"></dl>
-    <button class="btn primary" id="checkoutBtn">Checkout</button>
-  </div>
-</aside>
-
-<div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Checkout">
-  <div class="modal-card">
-    <form id="checkoutForm" class="checkout-form">
-      <h3>Checkout</h3>
-      <fieldset>
-        <legend>Contact</legend>
-        <label>Full name<input name="name" required></label>
-        <label>Email<input name="email" type="email" required></label>
-      </fieldset>
-      <fieldset>
-        <legend>Delivery</legend>
-        <label>Address<input name="address" required></label>
-        <div class="two">
-          <label>City<input name="city" required></label>
-          <label>PIN code<input name="pin" pattern="[0-9]{6}" title="6 digit PIN code" required></label>
+      <div class="toolbar">
+        <div class="pills" id="brandPills" aria-label="Filter by brand"></div>
+        <div class="controls">
+          <select id="typeFilter" aria-label="Filter by type">
+            <option value="all">All types</option>
+            <option value="Running">Running</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Skate">Skate</option>
+          </select>
+          <select id="priceFilter" aria-label="Filter by price">
+            <option value="all">All prices</option>
+            <option value="u5">Under ₹5,000</option>
+            <option value="m">₹5,000–₹10,000</option>
+            <option value="o">Over ₹10,000</option>
+          </select>
+          <select id="sort" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="brand">Brand</option>
+            <option value="name">Name</option>
+          </select>
         </div>
-      </fieldset>
-      <fieldset>
-        <legend>Payment</legend>
-        <label>Card number<input name="card" inputmode="numeric" pattern="[0-9 ]{16,19}" title="16 digit card number" placeholder="0000 0000 0000 0000" required></label>
-        <div class="two">
-          <label>Expiry<input name="exp" pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="MM/YY" placeholder="MM/YY" required></label>
-          <label>CVV<input name="cvv" pattern="[0-9]{3}" title="3 digits" required></label>
-        </div>
-        <p class="fine">Demo only. No payment is processed.</p>
-      </fieldset>
-      <button class="btn primary" type="submit">Place Order</button>
-      <button class="text-btn center" type="button" id="closeModal">Back to cart</button>
-    </form>
+      </div>
 
-    <div class="checkout-summary">
-      <h3>Order Summary</h3>
-      <div id="checkoutItems"></div>
-      <dl class="summary" id="checkoutTotals"></dl>
+      <p id="resultCount" class="brand-name" aria-live="polite"></p>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>Step out in your style.</h2>
+      <p>Good shoes make every step feel better. Explore everyday favourites and find a pair that feels like you.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 FirstStep</span>
+    <span>Made for your next move.</span>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="drawer" aria-label="Shopping cart">
+    <div class="drawer-head">
+      <h3>Your cart</h3>
+      <button class="text-btn" id="closeCart" type="button">Close</button>
     </div>
-
-    <div class="success" id="success" hidden>
-      <h3>You're all set.</h3>
-      <p id="successText"></p>
-      <button class="btn primary" id="doneBtn">Keep Shopping</button>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot" id="cartFoot" hidden>
+      <form class="coupon" id="couponForm">
+        <input id="couponInput" type="text" placeholder="Coupon code" aria-label="Coupon code">
+        <button type="submit">Apply</button>
+      </form>
+      <p class="coupon-msg" id="couponMsg">Try: STEP10, FLAT500, FREESHIP</p>
+      <div class="summary" id="summary"></div>
+      <button class="btn" id="checkoutBtn" type="button">Continue to checkout</button>
     </div>
-  </div>
-</div>
+  </aside>
 
-<script src="script.js"></script>
+  <section class="modal" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="modal-card">
+      <form class="checkout-form" id="checkoutForm">
+        <h3>Checkout</h3>
+        <fieldset>
+          <legend>Contact details</legend>
+          <label>Full name
+            <input name="name" type="text" autocomplete="name" required>
+          </label>
+          <label>Email address
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Delivery address</legend>
+          <label>Address
+            <input name="address" type="text" autocomplete="street-address" required>
+          </label>
+          <div class="two">
+            <label>City
+              <input name="city" type="text" autocomplete="address-level2" required>
+            </label>
+            <label>PIN code
+              <input name="postal" type="text" inputmode="numeric" autocomplete="postal-code" required>
+            </label>
+          </div>
+        </fieldset>
+        <button class="btn" type="submit">Place order</button>
+        <p class="fine">This demo checkout does not process real payments.</p>
+      </form>
+
+      <div class="checkout-summary">
+        <h3>Order summary</h3>
+        <div id="checkoutItems"></div>
+        <div class="summary" id="checkoutTotals"></div>
+        <button class="text-btn center" id="closeModal" type="button">Back to cart</button>
+      </div>
+
+      <div class="success" id="success" hidden>
+        <h3>Order confirmed!</h3>
+        <p id="successText"></p>
+        <button class="btn" id="doneBtn" type="button">Done</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
